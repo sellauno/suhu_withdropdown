@@ -1,27 +1,28 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
-class Input extends StatelessWidget {
-  const Input({
+class DropdownKonversi extends StatelessWidget {
+  const DropdownKonversi({
     Key key,
-    @required this.inputController,
+    @required this.dropdownOnChanged,
+    @required this.newValue,
+    @required this.listItem,
   }) : super(key: key);
 
   final Function dropdownOnChanged;
   final String newValue;
-  final List listItem;
+  final List<String> listItem;
 
   @override
   Widget build(BuildContext context) {
-    DropdownButton<String>(
-              items:
-              listItem.map((String value){
-                return DropdownMenuItem<String>(
-                value: value,
-                child: Text(value),);
-              }).toList(),
-              value:  newValue,
-              onChanged: dropdownOnChanged,
-            ),
+    return DropdownButton<String>(
+      items:
+        listItem.map((String value){
+          return DropdownMenuItem<String>(
+            value: value,
+            child: Text(value),);
+        }).toList(),
+      value: newValue,
+      onChanged: dropdownOnChanged,
+    );
   }
 }
